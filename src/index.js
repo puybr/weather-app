@@ -1,5 +1,4 @@
 const Particles = require("particlesjs");
-
 const key = process.env.AUTH_TOKEN
 let city = 'london';
 
@@ -22,11 +21,10 @@ const search = () => {
         e.preventDefault();
         if (input.value) {
             city = input.value.toLowerCase();
-            document.querySelector('.wrapper').innerHTML = ``;
             document.querySelectorAll('.wrapper').forEach((w) => {
-                w.remove();
-            })
+            w.remove();
             fetchData();
+            })
             
 
         };
@@ -49,6 +47,9 @@ const time = (is_day) => {
 const fetchData = () => {
     fetch('https://api.weatherapi.com/v1/current.json?key=' + key + '&q=' + city)
     .then(function(response) {
+        if (response.status === 400) {
+            window.location.reload();
+        }
         return response.json();
     })
     .then(function(response) {
@@ -59,16 +60,17 @@ const fetchData = () => {
         let temp_f = response.current.temp_f;
         let region = response.location.region;
         let is_day = response.current.is_day;
-        console.log(response)
+        console.log(response);
         time(is_day);
         renderData(locationName, currentCondition, conditionIcon, temp_c, temp_f, region);
         search();
-    
         
 
     })
     .catch(function(err) {
-        console.log('Error');
+        console.log(err);
+
+
     });
 
 }
