@@ -37,10 +37,10 @@ const renderData = (locationName, currentCondition, conditionIcon, temp_c, temp_
                         <div class="container-fluid">
                            <div class="row">
                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                           <h3>${locationName}</h3>
+                           <h1>${locationName}</h1>
                            <div class="input-group">
                            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                            <button type="button" class="btn btn-outline-primary">Search</button>
+                            <button type="button" class="btn btn-outline-primary">Submit</button>
                             </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
