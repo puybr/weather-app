@@ -1,6 +1,15 @@
 const key = process.env.AUTH_TOKEN
 const city = 'london'
 
+window.onload = function() {
+    Particles.init({
+      selector: '.background',
+      color: '#8f8f8f'
+    });
+  };
+
+
+
 const fetchData = () => {
     fetch('https://api.weatherapi.com/v1/current.json?key=' + key + '&q=' + city)
     .then(function(response) {
@@ -28,6 +37,7 @@ const renderData = (locationName, currentCondition, conditionIcon, temp_c, temp_
                         <div="wrapper">
                         <div class="innerwrapper">
                             <h3>${locationName}</h3>
+                            <input class="form-check-input" type="search" value="" required>
                             <h4><img src="https:${conditionIcon}" alt="icon">${currentCondition}</h4>
     
                         </div>
