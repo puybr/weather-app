@@ -22,10 +22,11 @@ const search = () => {
         e.preventDefault();
         if (input.value) {
             city = input.value.toLowerCase();
-            console.log(city);
-            deleteData();
+            document.querySelector('.wrapper').innerHTML = ``;
+            document.querySelectorAll('.wrapper').forEach((w) => {
+                w.remove();
+            })
             fetchData();
-            time();
             
 
         };
@@ -35,8 +36,6 @@ const search = () => {
 
 }
 
-
-console.log(document.querySelector('background'))
 
 const time = (is_day) => {
     console.log(is_day)
@@ -64,9 +63,10 @@ const fetchData = () => {
         let region = response.location.region;
         let is_day = response.current.is_day;
         console.log(response)
-        renderData(locationName, currentCondition, conditionIcon, temp_c, temp_f, region);
         time(is_day);
+        renderData(locationName, currentCondition, conditionIcon, temp_c, temp_f, region);
         search();
+    
         
 
     })
@@ -112,11 +112,6 @@ const renderData = (locationName, currentCondition, conditionIcon, temp_c, temp_
     content.innerHTML = innerwrapper;
                         
 
-}
-
-
-deleteData = () => {
-    document.querySelector('body').innerHTML = ``;
 }
 
 
