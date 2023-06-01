@@ -38,11 +38,8 @@ const search = () => {
 
 
 const time = (is_day) => {
-    console.log(is_day)
     if (is_day == 1) {
         document.body.style.backgroundColor = "darkblue";
-        
-
     } else document.body.style.backgroundColor = "#111";
            
 
