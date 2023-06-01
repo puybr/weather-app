@@ -34,16 +34,28 @@ fetchData();
 
 const renderData = (locationName, currentCondition, conditionIcon, temp_c, temp_f) => {
     const innerwrapper = `
-                        <div="wrapper">
-                        <div class="innerwrapper">
-                            <h3>${locationName}</h3>
-                            <input class="form-check-input" type="search" value="" required>
+                        <div class="container-fluid">
+                           <div class="row">
+                           <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                           <h3>${locationName}</h3>
+                           <div class="input-group">
+                           <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                            <button type="button" class="btn btn-outline-primary">Search</button>
+                            </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                             <h4><img src="https:${conditionIcon}" alt="icon">${currentCondition}</h4>
-    
-                        </div>
-                        <div><h1>${temp_c}°C</h1></div>
-                        <div><h1>${temp_f}°F</h1></div>
-                        </div>
+                             </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <h1>${temp_c}°C</h1>
+                            <hr>
+                            <h1>${temp_f}°F</h1>
+                            </div>
+                           </div>
+                         </div>
+
+
+                        
                         `;
     const body = document.querySelector('body')
     const content = document.createElement('div');
