@@ -1,4 +1,4 @@
-# Weather App
+# Weather App - [Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app)
 
 + Have a look at the [Demo](https://ghost-goblin.github.io/weather-app/)!
 
