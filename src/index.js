@@ -60,9 +60,10 @@ const fetchData = () => {
         let temp_f = response.current.temp_f;
         let region = response.location.region;
         let is_day = response.current.is_day;
+        let localtime = response.location.localtime;
         console.log(response);
         time(is_day);
-        renderData(locationName, currentCondition, conditionIcon, temp_c, temp_f, region);
+        renderData(locationName, currentCondition, conditionIcon, temp_c, temp_f, region, localtime);
         search();
         
 
@@ -78,7 +79,7 @@ const fetchData = () => {
 
 
 
-const renderData = (locationName, currentCondition, conditionIcon, temp_c, temp_f, region) => {
+const renderData = (locationName, currentCondition, conditionIcon, temp_c, temp_f, region, localtime) => {
     let innerwrapper = `
                         <div class="container-fluid">
                            <div class="row">
@@ -87,11 +88,12 @@ const renderData = (locationName, currentCondition, conditionIcon, temp_c, temp_
                            <p>${region}</p>
                            <div class="input-group">
                            <input  id="input" type="search" class="form-control rounded" placeholder="Search for a city ..." aria-label="Search" aria-describedby="search-addon" />
-                           <button id="submit" type="button" class="btn btn-outline-primary">Submit</button>
+                            <button id="submit" type="button" class="btn btn-outline-primary">Submit</button>
                             </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                             <h4><img src="https:${conditionIcon}" alt="icon">${currentCondition}</h4>
+                            <h3>${localtime}</h3>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                             <h1>${temp_c}°C</h1>
