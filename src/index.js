@@ -1,5 +1,5 @@
 const Particles = require("particlesjs");
-const key = process.env.AUTH_TOKEN
+const key = process.env.AUTH_TOKEN;
 let city = 'london';
 
 const particles = () => {
@@ -8,11 +8,6 @@ const particles = () => {
       color: '#8f8f8f'
     });
   };
-
-window.onload = () => {
-    particles();
-}
-
 
 const search = () => {
     const input = document.getElementById('input');
@@ -24,32 +19,23 @@ const search = () => {
             document.querySelectorAll('.wrapper').forEach((w) => {
             w.remove();
             fetchData();
-            })
-            
-
+            });           
         };
-
-    })
-    
-
-}
-
+    });
+};
 
 const time = (is_day) => {
     if (is_day == 1) {
         document.body.style.backgroundColor = "darkblue";
     } else document.body.style.backgroundColor = "#111";
-           
-
-}
-
+};
 
 const fetchData = () => {
     fetch('https://api.weatherapi.com/v1/current.json?key=' + key + '&q=' + city)
     .then(function(response) {
         if (response.status === 400) {
             window.location.reload();
-        }
+        };
         return response.json();
     })
     .then(function(response) {
@@ -63,21 +49,14 @@ const fetchData = () => {
         let localtime = response.location.localtime;
         console.log(response);
         time(is_day);
+        particles();
         renderData(locationName, currentCondition, conditionIcon, temp_c, temp_f, region, localtime);
         search();
-        
-
     })
     .catch(function(err) {
         console.log(err);
-
-
     });
-
-}
-
-
-
+};
 
 const renderData = (locationName, currentCondition, conditionIcon, temp_c, temp_f, region, localtime) => {
     let innerwrapper = `
@@ -101,20 +80,13 @@ const renderData = (locationName, currentCondition, conditionIcon, temp_c, temp_
                             <h1>${temp_f}°F</h1>
                             </div>
                            </div>
-                         </div>
-
-
-                        
-                        `;
+                         </div>                   
+                         `;
     const body = document.querySelector('body')
     const content = document.createElement('div');
     content.classList.add('wrapper');
     body.appendChild(content);
     content.innerHTML = innerwrapper;
-                        
-
-}
-
-
+};
 
 fetchData();
