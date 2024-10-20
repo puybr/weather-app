@@ -1,6 +1,6 @@
 # Weather App - [Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app)
 
-+ Have a look at the [Demo](https://ghost-goblin.github.io/weather-app/)!
++ Have a look at the [Demo](https://puybr.github.io/weather-app/)!
 
 ### 🎯 Targets
 + Practise with APIs, callbacks and promises
