@@ -7,7 +7,7 @@
 * CSS
 * JavaScript
 
-### 🎯 Targets
+## 🎯 Targets
 + Practise with APIs, callbacks and promises
 + Storing API keys securely in an env variable
 + Error handling
