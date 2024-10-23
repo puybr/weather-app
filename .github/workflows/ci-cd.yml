@@ -41,9 +41,12 @@ jobs:
     - name: Install packages
       run: |
         npm ci
+      env:
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
     
     - name: Build
       run: |
+        npm run build
         npx webpack
       env:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
@@ -60,8 +63,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-    env:
-        AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
 
     steps:
     
