@@ -1,7 +1,7 @@
 name: GitHub Pages
 
 env:
-  AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+  gh-pages: ${{ secrets.AUTH_TOKEN }}
 
 on:
   push:
