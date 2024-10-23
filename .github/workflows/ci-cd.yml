@@ -26,6 +26,8 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
 
     strategy:
       matrix:
@@ -42,7 +44,7 @@ jobs:
     - name: Store variables
       run: |
         touch .env
-        AUTH_TOKEN=${{ secrets.AUTH_TOKEN }} >> .env
+        echo AUTH_TOKEN=$AUTH_TOKEN >> .env
         
     - name: Install packages
       run: |
