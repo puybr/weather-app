@@ -10,9 +10,6 @@ on:
     paths-ignore:
       - '**/README.md'
 
-env:
-  AUTH_TOKEN: ${{ env.AUTH_TOKEN }}
-
 permissions:
   contents: read
   pages: write
