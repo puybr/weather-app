@@ -39,6 +39,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - name: Store variables
+      run: |
+        touch .env
+        AUTH_TOKEN=${{ secrets.AUTH_TOKEN }} >> .env
+        
     - name: Install packages
       run: |
         npm ci
