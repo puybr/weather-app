@@ -26,6 +26,8 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      AUTH_TOKEN: ${{ env.AUTH_TOKEN }}
 
     strategy:
       matrix:
@@ -41,15 +43,10 @@ jobs:
     - name: Install packages
       run: |
         npm ci
-      env:
-          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
     
     - name: Build
       run: |
-        npm run build
         npx webpack
-      env:
-          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
         
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
