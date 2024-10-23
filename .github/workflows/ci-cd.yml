@@ -1,5 +1,8 @@
 name: GitHub Pages
 
+env:
+  AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+
 on:
   push:
     branches: [ "main" ]
@@ -10,8 +13,6 @@ on:
     paths-ignore:
       - '**/README.md'
 
-env:
-  AUTH_TOKEN: ${{ env.AUTH_TOKEN }}
 
 permissions:
   contents: read
