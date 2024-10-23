@@ -1,5 +1,8 @@
 name: GitHub Pages
 
+env:
+  AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+
 on:
   push:
     branches: [ "main" ]
@@ -26,8 +29,6 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      gh-pages: ${{ secrets.AUTH_TOKEN }}
 
     strategy:
       matrix:
