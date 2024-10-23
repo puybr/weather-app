@@ -44,6 +44,7 @@ jobs:
         
     - name: Install packages
       run: |
+        echo $AUTH_TOKEN
         npm ci
     
     - name: Build
