@@ -45,7 +45,7 @@ jobs:
     - name: Store secret env variables
       run: |
         touch .env
-        echo AUTH_TOKEN=$AUTH_TOKEN >> .env
+        echo AUTH_TOKEN=${{ secrets.AUTH_TOKEN }} >> .env
         
     - name: Install packages
       run: |
