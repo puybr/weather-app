@@ -41,7 +41,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Store variables
+    - name: Store secret variables
       run: |
         touch .env
         echo AUTH_TOKEN=$AUTH_TOKEN >> .env
