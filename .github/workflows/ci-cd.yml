@@ -1,8 +1,5 @@
 name: GitHub Pages
 
-env:
-  gh-pages: ${{ secrets.AUTH_TOKEN }}
-
 on:
   push:
     branches: [ "main" ]
@@ -12,6 +9,9 @@ on:
     branches: [ "main" ]
     paths-ignore:
       - '**/README.md'
+
+env:
+  AUTH_TOKEN: ${{ env.AUTH_TOKEN }}
 
 permissions:
   contents: read
@@ -33,19 +33,18 @@ jobs:
     strategy:
       matrix:
         node-version: [20.x]
-
     steps:
     - uses: actions/checkout@v4
+
+    - name: Store secret env variables
+      run: |
+        touch .env
+        echo AUTH_TOKEN=${{ env.AUTH_TOKEN }} >> .env
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-
-    - name: Store secret env variables
-      run: |
-        touch .env
-        echo AUTH_TOKEN=${{ secrets.AUTH_TOKEN }} >> .env
         
     - name: Install packages
       run: |
@@ -67,7 +66,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-    
+
     steps:
     
     - name: Configure Pages
