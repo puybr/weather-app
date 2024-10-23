@@ -24,6 +24,9 @@ defaults:
     shell: bash
 
 jobs:
+  rspec:
+    uses: ./.github/workflows/ci-cd.yml
+    secrets: inherit
   build:
     runs-on: ubuntu-latest
     env:
