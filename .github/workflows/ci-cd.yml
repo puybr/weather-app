@@ -10,6 +10,9 @@ on:
     paths-ignore:
       - '**/README.md'
 
+env:
+  AUTH_TOKEN: ${{ env.AUTH_TOKEN }}
+
 permissions:
   contents: read
   pages: write
@@ -26,9 +29,7 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      AUTH_TOKEN: ${{ env.AUTH_TOKEN }}
-
+    
     strategy:
       matrix:
         node-version: [20.x]
