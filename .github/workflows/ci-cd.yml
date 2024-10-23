@@ -33,11 +33,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Store secret env variables
-      run: |
-        touch .env
-        echo AUTH_TOKEN=${{ env.AUTH_TOKEN }} >> .env
-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
@@ -50,13 +45,14 @@ jobs:
     - name: Build
       run: |
         npx webpack
+      env:
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
         
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
         name: 'github-pages'
         path: 'dist'
-        environment: 'github-pages'
 
   deploy:
     environment:
