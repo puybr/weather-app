@@ -1,3 +1,5 @@
+"use strict";
+
 const Particles = require("particlesjs");
 const key = process.env.AUTH_TOKEN;
 let city = 'london';
