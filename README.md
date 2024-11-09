@@ -10,7 +10,7 @@
 ## 🎯 Targets
 + Practise with APIs, callbacks and promises
 + Storing API keys securely in an env variable
-+ Error handling
++ Basic error handling
 
 ## 💡 Features
 * [Particles](https://github.com/VincentGarreau/particles.js/)
